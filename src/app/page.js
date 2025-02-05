@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
 import Link from "next/link";
 import { useState, useEffect, Suspense } from "react";
-import dynamic from 'next/dynamic';
+import dynamic from "next/dynamic";
 import { Loader2, AlertTriangle, MapPin } from "lucide-react";
 import {
   fetchWeatherData,
@@ -12,27 +12,27 @@ import {
 
 // Dynamically import components that might use browser APIs
 const SearchBar = dynamic(() => import("@/components/SearchBar"), {
-  ssr: false
+  ssr: false,
 });
 
 const CurrentWeather = dynamic(() => import("@/components/CurrentWeather"), {
-  ssr: false
+  ssr: false,
 });
 
 const WeatherCharts = dynamic(() => import("@/components/WeatherCharts"), {
-  ssr: false
+  ssr: false,
 });
 
 const ForecastDisplay = dynamic(() => import("@/components/ForecastDisplay"), {
-  ssr: false
+  ssr: false,
 });
 
 const WeatherMap = dynamic(() => import("@/components/WeatherMap"), {
-  ssr: false
+  ssr: false,
 });
 
 const AirQuality = dynamic(() => import("@/components/AirQuality"), {
-  ssr: false
+  ssr: false,
 });
 
 function ClientOnlyPortal({ children }) {
@@ -84,7 +84,9 @@ export default function Home() {
     setError(null);
 
     if (!navigator.geolocation) {
-      setError("Geolocation is not supported by your browser. Please search for a city.");
+      setError(
+        "Geolocation is not supported by your browser. Please search for a city."
+      );
       setLocationLoading(false);
       handleFallbackLocation();
       return;
@@ -122,13 +124,16 @@ export default function Home() {
 
       switch (error.code) {
         case 1:
-          errorMessage += "Location permission was denied. Please enable location services or search for a city.";
+          errorMessage +=
+            "Location permission was denied. Please enable location services or search for a city.";
           break;
         case 2:
-          errorMessage += "Location information is unavailable. Please try searching for a city instead.";
+          errorMessage +=
+            "Location information is unavailable. Please try searching for a city instead.";
           break;
         case 3:
-          errorMessage += "Location request timed out. Please try again or search for a city.";
+          errorMessage +=
+            "Location request timed out. Please try again or search for a city.";
           break;
         default:
           errorMessage += "Please try searching for a city instead.";
@@ -256,7 +261,10 @@ export default function Home() {
 
           {currentLocation && !loading && (
             <Suspense fallback={<div>Loading map...</div>}>
-              <WeatherMap location={currentLocation} weatherData={weatherData} />
+              <WeatherMap
+                location={currentLocation}
+                weatherData={weatherData}
+              />
             </Suspense>
           )}
         </div>

@@ -43,8 +43,24 @@ const CurrentWeather = ({ weatherData, unit }) => {
   };
 
   const getWindDirection = (degrees) => {
-    const directions = ['N', 'NNE', 'NE', 'ENE', 'E', 'ESE', 'SE', 'SSE', 
-                       'S', 'SSW', 'SW', 'WSW', 'W', 'WNW', 'NW', 'NNW'];
+    const directions = [
+      "N",
+      "NNE",
+      "NE",
+      "ENE",
+      "E",
+      "ESE",
+      "SE",
+      "SSE",
+      "S",
+      "SSW",
+      "SW",
+      "WSW",
+      "W",
+      "WNW",
+      "NW",
+      "NNW",
+    ];
     const index = Math.round(degrees / 22.5) % 16;
     return directions[index];
   };
@@ -167,9 +183,7 @@ const CurrentWeather = ({ weatherData, unit }) => {
               <CloudRain className="w-5 h-5 mr-2 text-blue-400" />
               <div>
                 <span className="text-sm">Rain (1h)</span>
-                <p className="font-semibold">
-                  {weatherData.rain["1h"]} mm
-                </p>
+                <p className="font-semibold">{weatherData.rain["1h"]} mm</p>
               </div>
             </div>
           )}

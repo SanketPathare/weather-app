@@ -1,10 +1,12 @@
-import { Droplets, Wind } from "lucide-react"
+import { Droplets, Wind } from "lucide-react";
 
 const ForecastDisplay = ({ forecastData, unit }) => {
-  const tempUnit = unit === "metric" ? "°C" : "°F"
-  const windUnit = unit === "metric" ? "m/s" : "mph"
+  const tempUnit = unit === "metric" ? "°C" : "°F";
+  const windUnit = unit === "metric" ? "m/s" : "mph";
 
-  const fiveDayForecast = forecastData.list.filter((item, index) => index % 8 === 0)
+  const fiveDayForecast = forecastData.list.filter(
+    (item, index) => index % 8 === 0
+  );
 
   return (
     <div className="bg-gray-800 p-6 rounded-lg shadow-lg mt-6">
@@ -30,7 +32,9 @@ const ForecastDisplay = ({ forecastData, unit }) => {
               {Math.round(day.main.temp)}
               {tempUnit}
             </p>
-            <p className="text-center mb-2 capitalize">{day.weather[0].description}</p>
+            <p className="text-center mb-2 capitalize">
+              {day.weather[0].description}
+            </p>
             <div className="flex justify-between items-center">
               <div className="flex items-center">
                 <Droplets className="w-4 h-4 mr-1" />
@@ -47,8 +51,7 @@ const ForecastDisplay = ({ forecastData, unit }) => {
         ))}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default ForecastDisplay
-
+export default ForecastDisplay;
